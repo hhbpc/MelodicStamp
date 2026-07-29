@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支持文档 - Melodic Stamp</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --apple-font: "SF Pro", "SF Pro Text", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            font-family: var(--apple-font);
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+        }
+        .glass { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px); 
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
+            }
+            .glass { 
+                background: rgba(29, 29, 31, 0.7);
+            }
+            
+            .highlight-card {
+                background: #0a0a0c !important;
+                border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 28px;
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            }
+            .highlight-card,
+            .highlight-card p,
+            .highlight-card h3,
+            .highlight-card span,
+            .highlight-card strong,
+            .highlight-card b {
+                color: #ffffff !important;
+            }
+            .highlight-card h3 {
+                font-weight: 600;
+                letter-spacing: -0.2px;
+            }
+            .prose-apple p,
+            .prose-apple li,
+            .prose-apple ul li,
+            .prose-apple ol li {
+                color: #f0f0f4 !important;
+            }
+            .prose-apple strong,
+            .prose-apple b,
+            article strong,
+            article b,
+            .highlight-card strong {
+                color: #ffffff !important;
+                font-weight: 600;
+            }
+            .prose-apple h2 {
+                color: #ffffff;
+                letter-spacing: -0.02em;
+                font-weight: 620;
+            }
+            .prose-apple li::before {
+                color: #98989e;
+            }
+            footer {
+                background: #000000 !important;
+                border-top-color: rgba(255, 255, 255, 0.08) !important;
+            }
+            .border-gray-100 {
+                border-color: rgba(255, 255, 255, 0.08) !important;
+            }
+            .dark\:border-gray-800 {
+                border-color: rgba(255, 255, 255, 0.08) !important;
+            }
+            nav a {
+                transition: color 0.2s;
+            }
+            nav a:hover {
+                color: #ffffff !important;
+            }
+            
+            .text-gray-500.dark\:text-gray-400 {
+                color: #9c9ca2 !important;
+            }
+        }
+        .prose-apple h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 0.5px solid rgba(0,0,0,0.05);
+            padding-bottom: 0.5rem;
+        }
+        .prose-apple h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-top: 2rem;
+            margin-bottom: 0.85rem;
+            color: #1d1d1f;
+        }
+        @media (prefers-color-scheme: dark) {
+            .prose-apple h2 {
+                border-bottom-color: rgba(255,255,255,0.08);
+            }
+            .prose-apple h3 {
+                color: #ffffff;
+            }
+        }
+        .prose-apple p {
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            color: #1d1d1f;
+        }
+        .prose-apple strong {
+            font-weight: 600;
+            color: #000000;
+        }
+        .prose-apple ul,
+        .prose-apple ol {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 1.8rem;
+        }
+        .prose-apple ol {
+            counter-reset: item;
+        }
+        .prose-apple li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.65rem;
+            line-height: 1.6;
+            color: #3a3a3c;
+        }
+        .prose-apple ul > li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #86868b;
+            font-weight: 500;
+        }
+        .prose-apple ol > li {
+            counter-increment: item;
+        }
+        .prose-apple ol > li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: #86868b;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+        }
+        .prose-apple a {
+            color: #0071e3;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .prose-apple a:hover {
+            text-decoration: underline;
+        }
+        @media (prefers-color-scheme: dark) {
+            .prose-apple a {
+                color: #2997ff;
+            }
+        }
+        .highlight-card {
+            background: #f5f5f7;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            transition: all 0.2s ease;
+            border: 0.5px solid transparent;
+        }
+        .badge {
+            background: rgba(0,0,0,0.04);
+            border-radius: 20px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            .badge {
+                background: rgba(255,255,255,0.08);
+                color: #dddddd;
+            }
+        }
+        hr.divider {
+            border: 0;
+            border-top: 0.5px solid rgba(0,0,0,0.08);
+            margin: 3rem 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .prose-apple h2[id],
+        .prose-apple h3[id] {
+            scroll-margin-top: 6rem;
+        }
+        .faq-item {
+            background: #f5f5f7;
+            border-radius: 18px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            padding: 1rem 1.4rem;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1d1d1f;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            user-select: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: "+";
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #86868b;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+        .faq-item .faq-body {
+            padding: 0 1.4rem 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #3a3a3c;
+        }
+        .faq-item .faq-body p {
+            margin-bottom: 0.75rem;
+            color: inherit;
+        }
+        .faq-item .faq-body p:last-child {
+            margin-bottom: 0;
+        }
+        @media (prefers-color-scheme: dark) {
+            .faq-item {
+                background: #0a0a0c;
+                border: 0.5px solid rgba(255, 255, 255, 0.1);
+            }
+            .faq-item summary {
+                color: #ffffff;
+            }
+            .faq-item .faq-body,
+            .faq-item .faq-body p {
+                color: #f0f0f4 !important;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            hr.divider {
+                border-top-color: rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+
+    <nav class="fixed w-full z-50 glass border-b border-gray-100 dark:border-gray-800">
+        <div class="max-w-5xl mx-auto px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-semibold tracking-tighter hover:opacity-70 transition">Melodic Stamp</a>
+            <div class="space-x-10 text-[13px] font-medium text-gray-500 dark:text-gray-400">
+                <a href="privacy.html" class="hover:text-black dark:hover:text-white transition-colors">隐私</a>
+                <a href="support.html" class="text-black dark:text-white transition-colors">支持</a>
+                <!-- <a href="changelog.html" class="hover:text-black dark:hover:text-white transition-colors">更新日志</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-32 px-8">
+        <div class="max-w-3xl mx-auto">
+            <header class="mb-12 border-b border-gray-100 dark:border-gray-800 pb-8">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">帮助与支持</h1>
+                <p class="text-gray-500 dark:text-gray-400">最后更新日期：2026年6月18日</p>
+            </header>
+
+            <article class="prose-apple text-[17px]">
+                <p>Melodic Stamp 是一款专为 macOS 设计的原生音乐播放器，完全运行于沙盒环境，不扫描无关目录，不联网收集数据。它拥有强大的音频兼容性，并深度支持 TTML 逐字歌词、LRC 增强型翻译/注音，为您提供纯净、沉浸的本地音乐体验。</p>
+
+                <h2>致歉信</h2>
+                <p>真的非常抱歉，Melodic Stamp 在 4 月底突然从 App Store 下架，相关宣传文章和视频也一并隐藏，给大家带来了困惑与不安。</p>
+                <p>起因是 Apple 在 macOS 26.4 中对 SwiftData 做出了一些未被明确的改动，导致软件在 26.4 至 26.5 的系统版本上出现了较为严重的稳定性问题，在更早的系统版本中 SwiftData 也依然带来部分不稳定的行为。</p>
+                <p>Melodic Stamp 是我完全利用业余时间独立开发的作品，由于个人精力和时间实在有限，我没能做到第一时间紧急修复，这并非敷衍，更绝不是想要坑骗任何一位用户。</p>
+                <p>为了不让更多人在不知情的情况下受到影响，也为了能够沉下心来彻底解决问题，我选择暂停销售并暂时隐藏了宣传内容。对于这一决定给您带来的失望与不便，我发自内心地感到抱歉，同时也深深感谢您一直以来的包容和支持。</p>
+                <p>关于本次更新，<strong>1.2.0</strong> 版本进行了完整的数据库重构，彻底移除了对 SwiftData 的依赖，从根本上解决了此前由此引发的各种异常崩溃。与此同时，这一版也补全了 1.1.0 中承诺过的全部功能，并提供了相对完善的数据库迁移方案。希望这一次，能不负您的等待与信任。</p>
+                <p>再次感谢您对本软件的喜爱和开发者的理解和包容。</p>
+
+                <hr class="divider">
+
+                <h2>常见问题集合</h2>
+
+                <h3>基础</h3>
+                <ol>
+                    <li><a href="privacy.html">Melodic Stamp 隐私协议</a>。</li>
+                    <!-- <li><a href="changelog.html">Melodic Stamp 更新日志</a>。</li> -->
+                </ol>
+
+                <h3>存储</h3>
+                <details class="faq-item">
+                    <summary>如何通过文件夹导入？</summary>
+                    <div class="faq-body">
+                        <p>执行以下任一操作：</p>
+                        <p>• 快捷键 <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">Command + L</code> 打开文件夹选择器，选中音乐目录；<br>
+                        • 点按"点击添加文件夹"按钮，或直接拖拽文件夹至导入区域。</p>
+                        <p>Melodic Stamp 仅扫描您主动添加的文件夹，不会读取任何其他位置。详见下方 <a href="#quick-start">快速上手</a>。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>如何挂载 Jellyfin？</summary>
+                    <div class="faq-body">
+                        <p>从 <strong>1.2.0</strong> 版本开始，Melodic Stamp 支持连接 Jellyfin 等自托管网络音乐服务。在应用设置中添加您的 Jellyfin 服务器地址并登录账户，即可挂载网络媒体库。</p>
+                        <p>首次连接时应用会请求网络权限，仅用于与您自己的服务器通信，您的数据不会上传至任何第三方服务器。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>导入文件夹后无法扫描到音频文件？</summary>
+                    <div class="faq-body">
+                        <p>请依次检查：</p>
+                        <p>• 确认文件夹是通过系统文件选择对话框或拖拽方式主动添加的（沙盒授权要求）；<br>
+                        • 确认音频文件格式在支持范围内（见 <a href="#audio-formats">音频格式支持</a>）；<br>
+                        • 确认文件夹位于内置或直连本地存储，暂不支持 NAS、网络驱动器或挂载存储设备；<br>
+                        • 可在设置中尝试"强制重新扫描元数据"或开启"启动时刷新"。</p>
+                        <p>若仍无法解决，欢迎邮件联系开发者反馈。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>如何从 SwiftData 迁移数据？</summary>
+                    <div class="faq-body">
+                        <p><strong>1.2.0</strong> 版本对数据库进行了完整重构，彻底移除了对 SwiftData 的依赖。升级到 1.2.0 后，应用提供了相对完善的数据库迁移方案，按应用内提示操作即可将旧数据（收藏、歌单、播放统计等）迁移到新数据库。</p>
+                        <p>建议在迁移前备份媒体库，以防意外。</p>
+                    </div>
+                </details>
+
+                <h3>音频</h3>
+                <ol>
+                    <li><a href="#audio-formats">音频格式支持</a>（见本页下方）。</li>
+                </ol>
+
+                <h3>歌词</h3>
+                <ol>
+                    <li><a href="#lyrics-formats">歌词文件支持</a>（见本页下方）。</li>
+                </ol>
+
+                <hr class="divider">
+
+                <h2>安装、测试、购买、退款</h2>
+
+                <h3>安装</h3>
+                <p>目前您可以通过 <strong>TestFlight</strong> 连接加入测试队列。</p>
+                <ul>
+                    <li><strong>App Store 正式版</strong> — 稳定可靠，通过 macOS App Store 直接获取。</li>
+                    <li><strong>TestFlight 测试版</strong> — 抢先体验新功能，名额有限，需接受潜在不稳定风险。加入测试前建议备份媒体库。<br>
+                    <span class="text-gray-500 dark:text-gray-400 text-sm">注意：测试版与正式版可相互替换（构建号后两位高者可覆盖，否则需卸载重装）。</span></li>
+                </ul>
+
+                <h2 id="audio-formats">音频格式支持</h2>
+                <p>Melodic Stamp 兼容几乎所有主流无损及有损格式，无需转码：</p>
+                <div class="mb-4 flex flex-wrap gap-1">
+                    <span class="badge">FLAC</span><span class="badge">MP3</span><span class="badge">Ogg Opus/Vorbis</span><span class="badge">DSF / DSDIFF (DSD64, DoP)</span>
+                    <span class="badge">Monkey's Audio (APE)</span><span class="badge">WavPack</span><span class="badge">True Audio</span><span class="badge">Shorten</span>
+                    <span class="badge">WAV / AIFF</span><span class="badge">Musepack</span><span class="badge">libsndfile 系列</span>
+                </div>
+
+                <h2 id="lyrics-formats">歌词格式支持</h2>
+                <p>精准显示原文、翻译、注音，支持逐字点亮与多轨对唱。</p>
+                <ul>
+                    <li><strong>TTML</strong> — 逐字 / 逐行歌词，支持对唱、背景歌词，兼容 AMLL TTML Database 与 Apple Music 逐字注音规范。</li>
+                    <li><strong>LRC</strong> — 基础歌词、逐字型 LRC、增强型 LRC（社区扩展格式：支持原文 + 翻译 + 注音连续或分段排列）。<br>
+                    <span class="text-gray-500 dark:text-gray-400 text-sm">注：LRC 若仅提供注音行而无翻译，注音会被识别为翻译，属格式限制。</span></li>
+                    <li><strong>内嵌歌词</strong> — 读取音频元数据（ID3 Lyrics）中的歌词。</li>
+                </ul>
+
+                <h2 id="quick-start">快速上手</h2>
+                <p><strong>1. 导入音乐文件夹</strong><br>
+                执行以下任一操作：<br>
+                • 快捷键 <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">Command + L</code> 打开文件夹选择器，选中音乐目录。<br>
+                • 点按"点击添加文件夹"按钮，或直接拖拽文件夹至导入区域。<br>
+                Melodic Stamp 仅扫描您主动添加的文件夹，不会读取任何其他位置。</p>
+                <p><strong>2. 歌词自动匹配</strong><br>
+                应用会在导入的文件夹（含子文件夹）内，查找与音频文件<strong>同名</strong>的歌词文件。<br>
+                匹配优先级：<code>.ttml</code> 优先，其次为 <code>.lrc</code> 或 <code>.txt</code> 。若同时存在外置歌词与内嵌歌词，默认优先使用外置歌词（可在元数据编辑器中调整）。</p>
+                <p><strong>3. 开始播放</strong><br>
+                点击曲目即可播放，媒体库支持收藏、歌单、专辑及艺术家视图。还可通过菜单栏图标快速控制或显示当前歌词。</p>
+
+                <div class="highlight-card">
+                    <h3 class="text-lg font-semibold mb-2 text-black dark:text-white">隐私与安全核心</h3>
+                    <p class="text-[15px] leading-relaxed mb-0">本应用仅在您连接 <strong>Jellyfin 等自托管网络音乐服务</strong>，或通过 <strong>艺人信息补全</strong> 时才会请求网络权限（1.2.0 版本起）。其余所有数据均存于本地沙盒，绝不收集个人信息或上传音频，卸载即清除。元数据编辑器会直接修改音频文件，建议编辑前备份重要文件。</p>
+                </div>
+
+                <h2>个性化设置</h2>
+                <p>通过 <strong>设置 (⌘ ,)</strong> 可深度定制体验：</p>
+                <ul>
+                    <li><strong>窗口背景</strong> — 纯色 / 活力 / 空灵，调整模糊与混色效果。</li>
+                    <li><strong>歌词显示</strong> — 独立开关翻译、注音，支持粗体、淡出效果，实验性歌词渲染器（TextRender）可提升逐字精度。</li>
+                    <li><strong>菜单栏歌词</strong> — 显示当前歌词或光碟图标，支持逐字动画（占用稍高，属正常现象）。</li>
+                    <li><strong>媒体库</strong> — 文件夹自动观察、启动时刷新，可强制重新扫描元数据。</li>
+                    <li><strong>待播清单记忆</strong> — 重启后恢复播放队列及进度。</li>
+                    <li><strong>悬浮窗/常亮</strong> — 专注歌词页时可防止屏幕休眠。</li>
+                </ul>
+
+                <div class="bg-gray-50 dark:bg-gray-900/40 rounded-2xl p-5 my-6 border border-gray-100 dark:border-gray-800">
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-0 flex items-start gap-2">
+                        <span>本应用不提供云端歌词下载或识别，所有歌词需自行准备。但完善的本地匹配机制让您的歌词库井然有序。如需反馈问题或功能建议，欢迎邮件联系。</span>
+                    </p>
+                </div>
+
+                <h2>联系我们</h2>
+                <p>如果您对本政策有任何疑问，请联系开发者：<br>
+                <a href="mailto:xinshao_air@foxmail.com" class="text-[#0071e3] dark:text-[#2997ff] no-underline hover:underline">xinshao_air@foxmail.com</a></p>
+            </article>
+
+            <div class="mt-20 pt-6 border-t border-gray-100 dark:border-gray-800">
+                <a href="index.html" class="text-[#0071e3] dark:text-[#2997ff] font-medium hover:underline inline-flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    返回 Melodic Stamp 官网
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-24 border-t border-gray-100 dark:border-gray-800 bg-[#f5f5f7] dark:bg-black">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 dark:text-gray-500 text-[12px] space-y-4 md:space-y-0">
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="hover:text-black dark:hover:text-white transition-colors">隐私政策</a>
+                    <!-- <a href="changelog.html" class="hover:text-black dark:hover:text-white transition-colors">更新日志</a> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
